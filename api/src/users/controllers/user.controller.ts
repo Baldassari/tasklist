@@ -8,6 +8,7 @@ import {
 import { UsersService } from "../services/user.service";
 import { CreateUserDTO } from "../dtos";
 import { BaseResponse, validateEmailFormat } from "../../utils";
+import { UserDTO } from "../dtos/users.dto";
 
 @Controller("users")
 export class UsersController {
@@ -36,8 +37,9 @@ export class UsersController {
             });
     }
 
-    @Post()
-    async createSession() {
-        
+    @Post('/login')
+    async login(@Body() login: UserDTO) {
+        const user = await this.usersService.login(login);
+        return new BaseResponse({ token: user.token });
     }
 }

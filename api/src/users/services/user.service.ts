@@ -1,8 +1,10 @@
 import { Model } from "mongoose";
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
+import { sign, verify } from "jsonwebtoken";
 import { CreateUserDTO } from "../dtos";
 import { User } from "../models/user.model";
+import { UserDTO } from "../dtos/users.dto";
 
 @Injectable()
 export class UsersService {
@@ -20,6 +22,19 @@ export class UsersService {
             name: dto.name,
         });
         return createdUser.save();
+    }
+
+    async login(dto: UserDTO): Promise<User> {
+        const token = sign({ email: dto.email }, 'secrettasklist');
+        return this.userModel.findOneAndUpdate({ email: dto.email, password: dto.password }, { token: token }, (err, doc, res) => {
+            if (err) {
+                throw err;
+            }
+            console.log(token, doc, res);
+            if (doc.token === token) doc.save();
+            return token;
+        })
+
     }
     
     async userExistsByEmail(email: string) {

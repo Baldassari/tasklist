@@ -5,6 +5,7 @@ export class User extends Document {
     email: string;
     password: string;
     name: string;
+    token: string;
     isActive: boolean;
 }
 
@@ -12,6 +13,7 @@ export const UserSchema = new Schema<User>({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     name: { type: String },
+    token: { type: String},
     isActive: { type: Boolean, default: true }
 });
 

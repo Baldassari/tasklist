@@ -1,3 +1,3 @@
-import { CreateUserDTO } from "./create-users.dto";
+import { CreateUserDTO } from "./users.dto";
 
 export { CreateUserDTO };
