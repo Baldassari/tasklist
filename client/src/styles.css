@@ -2,3 +2,29 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-dialog-container {
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+.mat-dialog-content {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.modal-form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+.modal-form-action {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.modal-form-action > button {
+    width: 50%;
+    border-radius: 0px;
+}

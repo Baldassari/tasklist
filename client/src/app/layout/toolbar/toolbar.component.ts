@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogModalComponent } from 'src/app/components/dialog-modal/dialog-modal.component';
+import { LoginModalComponent } from 'src/app/components/login-modal/login-modal.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -20,7 +20,7 @@ export class ToolbarComponent implements OnInit {
 
   openLogin() {
     console.log('openLogin')
-    const dialogRef = this.dialog.open(DialogModalComponent, {
+    const dialogRef = this.dialog.open(LoginModalComponent, {
       width: '300px',
       data: { email: this.email, password: this.password }
     });
