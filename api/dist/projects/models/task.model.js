@@ -10,6 +10,10 @@ var TaskEnum;
     TaskEnum[TaskEnum["PARKED"] = 3] = "PARKED";
 })(TaskEnum = exports.TaskEnum || (exports.TaskEnum = {}));
 class Task extends mongoose_1.Document {
+    constructor(description) {
+        super();
+        this.description = description;
+    }
 }
 exports.Task = Task;
 exports.TaskSchema = new mongoose_1.Schema({

@@ -16,6 +16,7 @@ exports.ProjectService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
+const task_model_1 = require("../models/task.model");
 let ProjectService = (() => {
     let ProjectService = class ProjectService {
         constructor(projectModel) {
@@ -31,12 +32,12 @@ let ProjectService = (() => {
             });
             return createdProject.save();
         }
-        async addProjectTask(projectId, task) {
-            return this.projectModel.findById(projectId, (err, project) => {
+        async addProjectTask(projectId, taskDescription) {
+            return this.projectModel.findByIdAndUpdate(projectId, (err, project) => {
                 if (err) {
                     throw err;
                 }
-                project.tasks = [...project.tasks, task];
+                project.tasks = [...project.tasks, new task_model_1.Task(taskDescription)];
                 return project.save();
             });
         }

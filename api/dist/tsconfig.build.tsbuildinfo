@@ -1537,8 +1537,8 @@
         "affectsGlobalScope": false
       },
       "../src/projects/models/task.model.ts": {
-        "version": "2fe513b2239f92839031862df393064fa8fdb0ec638896d05587f915c6d443a9",
-        "signature": "8653b7762a6240878d0795a75b0b9c1f797718b11412d813c78af77fe1c06bb1",
+        "version": "130a06f266ff3ead42cee03bc990b99853447cebfdfcd90e1ae0183c7580919c",
+        "signature": "4b286a8ebaa7ba63d77ed12fa807673e1e0d41cc08f82f8bae875ebf2977ae0d",
         "affectsGlobalScope": false
       },
       "../src/projects/models/project.model.ts": {
@@ -1547,8 +1547,8 @@
         "affectsGlobalScope": false
       },
       "../src/projects/services/project.service.ts": {
-        "version": "883f8f586b3cec26ed7a463aafed5ea207ff9ab068753a16fe85e1fb4da65f9e",
-        "signature": "e94e035c49f7f6eea5199b6732fd6255e764aed2bd995e83bebc0949dc2f73ca",
+        "version": "d99ffb1ce9ce4157505b34dc9c302feb341e94690c05afede3e0b9a7ce0210ee",
+        "signature": "916b8077c956c626798f1603a675af8c670dbdebc47c211ee4912712a01e8df2",
         "affectsGlobalScope": false
       },
       "../src/projects/middleware/user.middleware.ts": {
@@ -1561,9 +1561,14 @@
         "signature": "c78638d40a2f8d1857d87a7e1990c6512dfb475ca3b3806bd1c6d600c96edac1",
         "affectsGlobalScope": false
       },
+      "../src/projects/dtos/add-task.dto.ts": {
+        "version": "6d2eecc5313fed29dbd4c9907b3cace1c936472bf5205bcba87cd2b066f67aae",
+        "signature": "076c8c77cecd3a72c95e36ead13b1d98df4181a5fb7821ffc2d23dd78b740788",
+        "affectsGlobalScope": false
+      },
       "../src/projects/controllers/project.controller.ts": {
-        "version": "5bbeb09c2fc6c714897e5f652554f5f82a1046ca7fdf0ac9a5c3bcbe55f60514",
-        "signature": "f44ea9cfe0004cc51c234db92182bb6b023972b982ad468573facd3f544d50ae",
+        "version": "1316378c840e39fcf01f3fb7cbda93d45b7929405e7f1b26ec2ac4c3100956b5",
+        "signature": "614f6361a5289f9615556a9c236fb6a98a68a1f0bbce051753b654847c27403b",
         "affectsGlobalScope": false
       },
       "../src/projects/projects.module.ts": {
@@ -5571,8 +5576,18 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/projects/dtos/add-task.dto.ts",
         "../src/projects/dtos/create-project.dto.ts",
+        "../src/projects/models/project.model.ts",
+        "../src/projects/models/task.model.ts",
         "../src/projects/services/project.service.ts"
+      ],
+      "../src/projects/dtos/add-task.dto.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
       ],
       "../src/projects/dtos/create-project.dto.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -9223,6 +9238,7 @@
         "../node_modules/@types/node/util.d.ts"
       ],
       "../src/projects/controllers/project.controller.ts": [
+        "../src/projects/dtos/add-task.dto.ts",
         "../src/projects/dtos/create-project.dto.ts",
         "../src/projects/models/project.model.ts",
         "../src/projects/services/project.service.ts"
@@ -9244,8 +9260,7 @@
       ],
       "../src/projects/services/project.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
-        "../src/projects/models/project.model.ts",
-        "../src/projects/models/task.model.ts"
+        "../src/projects/models/project.model.ts"
       ],
       "../src/users/controllers/user.controller.ts": [
         "../src/users/dtos/index.ts",
@@ -9662,6 +9677,7 @@
       "../src/app.module.ts",
       "../src/main.ts",
       "../src/projects/controllers/project.controller.ts",
+      "../src/projects/dtos/add-task.dto.ts",
       "../src/projects/dtos/create-project.dto.ts",
       "../src/projects/middleware/user.middleware.ts",
       "../src/projects/models/project.model.ts",

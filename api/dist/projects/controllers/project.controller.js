@@ -16,6 +16,7 @@ exports.ProjectController = void 0;
 const common_1 = require("@nestjs/common");
 const project_service_1 = require("../services/project.service");
 const create_project_dto_1 = require("../dtos/create-project.dto");
+const add_task_dto_1 = require("../dtos/add-task.dto");
 let ProjectController = (() => {
     let ProjectController = class ProjectController {
         constructor(projectService) {
@@ -28,7 +29,9 @@ let ProjectController = (() => {
         async createProject(dto) {
             return this.projectService.createProject(dto.name, dto.email);
         }
-        async addProjectTask(params) {
+        async addProjectTask(email, projectId, dto) {
+            console.log(email, projectId);
+            return this.projectService.addProjectTask(projectId, dto.description);
         }
     };
     __decorate([
@@ -46,10 +49,10 @@ let ProjectController = (() => {
         __metadata("design:returntype", Promise)
     ], ProjectController.prototype, "createProject", null);
     __decorate([
-        common_1.Post(':projectId'),
-        __param(0, common_1.Param()),
+        common_1.Post('/:email/:projectId'),
+        __param(0, common_1.Param('email')), __param(1, common_1.Param('projectId')), __param(2, common_1.Body()),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
+        __metadata("design:paramtypes", [String, String, add_task_dto_1.AddTaskDTO]),
         __metadata("design:returntype", Promise)
     ], ProjectController.prototype, "addProjectTask", null);
     ProjectController = __decorate([

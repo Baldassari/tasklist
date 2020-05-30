@@ -12,6 +12,11 @@ export class Task extends Document {
     status: TaskEnum;
     createdAt: Date;
     isActive: boolean;
+
+    constructor(description: string) {
+        super();
+        this.description = description;
+    }
 }
 
 export const TaskSchema = new Schema<Task>({

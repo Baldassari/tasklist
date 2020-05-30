@@ -20,13 +20,13 @@ export class ProjectService {
         return createdProject.save();
     }
 
-    async addProjectTask(projectId: string, task: Task): Promise<Project> {
-        return this.projectModel.findById(projectId, (err, project) => {
+    async addProjectTask(projectId: string, taskDescription: string): Promise<Project> {
+        return this.projectModel.findByIdAndUpdate(projectId, (err, project) => {
             if (err) {
                 throw err;
             }
             
-            project.tasks = [ ...project.tasks, task];
+            project.tasks = [ ...project.tasks, new Task(taskDescription)];
             return project.save();
         });
     }

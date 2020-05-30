@@ -10,5 +10,6 @@ export declare class Task extends Document {
     status: TaskEnum;
     createdAt: Date;
     isActive: boolean;
+    constructor(description: string);
 }
 export declare const TaskSchema: Schema<Task>;

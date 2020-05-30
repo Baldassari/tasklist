@@ -1,6 +1,9 @@
 import { Controller, Body, Get, Post, Query, Patch, Param } from '@nestjs/common';
 import { ProjectService } from '../services/project.service';
 import { CreateProjectDTO } from '../dtos/create-project.dto';
+import { AddTaskDTO } from '../dtos/add-task.dto';
+import { Task } from '../models/task.model';
+import { Project } from "../models/project.model";
 
 @Controller('projects')
 export class ProjectController {
@@ -13,12 +16,14 @@ export class ProjectController {
     }
 
     @Post()
-    async createProject(@Body() dto: CreateProjectDTO) {
+    async createProject(@Body() dto: CreateProjectDTO): Promise<Project> {
         return this.projectService.createProject(dto.name, dto.email);
     }
 
-    @Post(':projectId')
-    async addProjectTask(@Param() params) {
-        
+    @Post('/:email/:projectId')
+    async addProjectTask(@Param('email') email: string, @Param('projectId') projectId: string, @Body() dto: AddTaskDTO): Promise<Project> {
+        //TODO~
+        console.log(email, projectId)
+        return this.projectService.addProjectTask(projectId, dto.description);
     }
 }
