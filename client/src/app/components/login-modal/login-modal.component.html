@@ -1,0 +1,17 @@
+<div mat-dialog-content>
+    <mat-toolbar color="primary">Login</mat-toolbar>
+    <div class="modal-form-content">
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput type="email" [(ngModel)]="data.email">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" [(ngModel)]="data.password">
+        </mat-form-field>
+    </div>
+    <div class="modal-form-action">
+        <button mat-flat-button color="accent" (click)="login()">Log in</button>
+        <button mat-flat-button color="warn" (click)="signup()">Sign up</button>
+    </div>
+</div>

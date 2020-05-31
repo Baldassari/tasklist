@@ -1,0 +1,46 @@
+<mat-card>
+    <mat-card-header style="margin-bottom: 15px;">
+        <mat-card-title>{{projectName}}</mat-card-title>
+        <mat-card-subtitle>{{projectSubtitle}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <h3 style="margin: 0px 16px;
+        border-bottom: 1px solid blueviolet;">Todo</h3>
+        <mat-selection-list [(ngModel)]="tasksSelected">
+            <mat-list-option 
+                *ngFor="let task of tasksTodo()" [value]="task.description" [selected]="!task.isActive" [disableRipple]="true" (click)="onDone()">
+                <div style="display:flex; justify-content:space-between;align-items:center">
+                    {{task.description}}
+                    <div>
+                        <button mat-icon-button (click)="onRemove(task)">
+                          <mat-icon>clear</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </mat-list-option>
+        </mat-selection-list>
+    </mat-card-content>
+    <mat-card-content>
+        <h3 style="margin: 0px 16px;
+        border-bottom: 1px solid darkgoldenrod;">Done</h3>
+        <mat-selection-list #tasks>
+            <mat-list-option 
+                *ngFor="let task of tasksDone()" 
+                [selected]="!task.isActive" 
+                [disabled]="!task.isActive"
+                matTooltip="Info about the action">
+                {{task.description}}
+            </mat-list-option>
+        </mat-selection-list>
+    </mat-card-content>
+    <div style="width: 100%;
+        justify-content: space-evenly;
+        display: flex;
+        align-items: center;">
+        <mat-form-field style="width: 40%;">
+            <mat-label>New Task</mat-label>
+            <input matInput [(ngModel)]="newTask">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="addTask()" style="height: 35px">Add</button>
+    </div>
+</mat-card>
