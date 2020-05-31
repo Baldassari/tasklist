@@ -2,7 +2,7 @@ import { Schema, Document, model } from "mongoose";
 import { ModelDefinition } from "@nestjs/mongoose";
 import { TaskSchema, Task } from "./task.model";
 
-export enum ProjectStatusEnum {
+export enum ProjectStatusType {
     TODO,
     ONGOING,
     DONE,
@@ -12,7 +12,7 @@ export enum ProjectStatusEnum {
 export class Project extends Document {
     constructor(
         public name: string,
-        public status: ProjectStatusEnum,
+        public status: ProjectStatusType,
         public tasks: Task[],
         public createdBy: string,
         public createdAt: Date,
@@ -25,11 +25,11 @@ export class Project extends Document {
 export const ProjectSchema = new Schema<Project>({
     name: { type: String, required: true },
     status: {
-        type: ProjectStatusEnum,
+        type: ProjectStatusType,
         required: true,
-        default: ProjectStatusEnum.TODO,
+        default: ProjectStatusType.TODO,
     },
-    tasks: [TaskSchema],
+    tasks: { type: [TaskSchema] },
     createdBy: { type: String, required: true },
     createdAt: { type: Date, default: new Date() },
 });

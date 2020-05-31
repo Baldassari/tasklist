@@ -1,6 +1,9 @@
 <div>
     <section *ngFor="let project of projects">
-        <app-project-card [projectName]="project.name"></app-project-card>
+        <app-project-card 
+            [projectId]="project._id"
+            [projectName]="project.name"
+            [projectTasks]="project.tasks"></app-project-card>
     </section>
     <section style="display: flex;">
         <mat-card style="width: 100%;

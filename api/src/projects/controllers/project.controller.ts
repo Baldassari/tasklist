@@ -9,7 +9,7 @@ import {
 } from "@nestjs/common";
 import { ProjectService } from "../services/project.service";
 import { CreateProjectDTO } from "../dtos/create-project.dto";
-import { AddTaskDTO } from "../dtos/add-task.dto";
+import { TaskDTO } from "../dtos/add-task.dto";
 import { Task } from "../models/task.model";
 import { Project } from "../models/project.model";
 
@@ -32,10 +32,17 @@ export class ProjectController {
     async addProjectTask(
         @Param("email") email: string,
         @Param("projectId") projectId: string,
-        @Body() dto: AddTaskDTO,
+        @Body() dto: TaskDTO,
     ): Promise<Project> {
-        //TODO~
-        console.log(email, projectId);
         return this.projectService.addProjectTask(projectId, dto.description);
+    }
+
+    @Patch("/:email/:projectId")
+    async projectTaskDesactive(
+        @Param("email") email: string,
+        @Param("projectId") projectId: string,
+        @Body() dto: TaskDTO,
+    ) {
+        return this.projectService.projectTaskDesactive(projectId, dto.description);
     }
 }

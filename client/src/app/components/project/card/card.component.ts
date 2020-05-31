@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ProjectsService } from 'src/app/core/projects.service';
 
 @Component({
   selector: 'app-project-card',
@@ -6,16 +7,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
+  @Input() projectId: string;
   @Input() projectName: string;
   @Input() projectSubtitle: string;
-  @Input() projectTasks: any[] = [
-    {description: 'Task 1', isActive: true },
-    {description: 'Task 2', isActive: false },
-    {description: 'Task 3', isActive: true },
-    ]; 
+  @Input() projectTasks: any[]; 
+
   tasksSelected: string[];
   newTask: string;
-  constructor() { }
+  
+  constructor(private projectService: ProjectsService) { }
 
   ngOnInit(): void {
   }
@@ -35,13 +35,16 @@ export class CardComponent implements OnInit {
 
   onDone() {
     this.tasksSelected.forEach(description => {
-      const taskIdx = this.projectTasks.findIndex(f => f.description === description);
-      this.projectTasks[taskIdx] = { ...this.projectTasks[taskIdx], isActive: false };
+      this.projectService.desactiveProjectTask(description, this.projectId).subscribe((project:any) => {
+        this.projectTasks = project?.tasks;
+      })
     })
   }
 
   addTask() {
-    this.projectTasks = [ ...this.projectTasks, { description: this.newTask, isActive: true }]
+    this.projectService.addProjectTask(this.newTask, this.projectId).subscribe((project: any) => {
+      this.projectTasks = project?.tasks;
+    })
   }
 
 }

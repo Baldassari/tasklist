@@ -7,7 +7,8 @@
         <h3 style="margin: 0px 16px;
         border-bottom: 1px solid blueviolet;">Todo</h3>
         <mat-selection-list [(ngModel)]="tasksSelected">
-            <mat-list-option *ngFor="let task of tasksTodo()" [value]="task.description" [selected]="!task.isActive" [disableRipple]="true" (click)="onDone()">
+            <mat-list-option 
+                *ngFor="let task of tasksTodo()" [value]="task.description" [selected]="!task.isActive" [disableRipple]="true" (click)="onDone()">
                 <div style="display:flex; justify-content:space-between;align-items:center">
                     {{task.description}}
                     <div>
@@ -23,7 +24,11 @@
         <h3 style="margin: 0px 16px;
         border-bottom: 1px solid darkgoldenrod;">Done</h3>
         <mat-selection-list #tasks>
-            <mat-list-option *ngFor="let task of tasksDone()" [selected]="!task.isActive" [disabled]="!task.isActive">
+            <mat-list-option 
+                *ngFor="let task of tasksDone()" 
+                [selected]="!task.isActive" 
+                [disabled]="!task.isActive"
+                matTooltip="Info about the action">
                 {{task.description}}
             </mat-list-option>
         </mat-selection-list>

@@ -23,4 +23,14 @@ export class ProjectsService {
       .pipe(tap(x => console.log(x)))
   }
 
+  addProjectTask(taskName: string, projectId: string) {
+    return this.http.post(`http://localhost:3000/projects/${this.email}/${projectId}`, { description: taskName })
+      .pipe(tap(x => console.log(x)))
+  }
+
+  desactiveProjectTask(taskName:string, projectId: string) {
+    return this.http.patch(`http://localhost:3000/projects/${this.email}/${projectId}`, { description: taskName })
+    .pipe(tap(x => console.log(x)))
+  }
+
 }

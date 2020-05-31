@@ -30,4 +30,19 @@ export class ProjectService {
         project.tasks = [...project.tasks, new Task(taskDescription)];
         return project.save();
     }
+
+    async projectTaskDesactive(
+        projectId: string,
+        taskDescription: string,
+    ): Promise<Project> {
+        const project = await this.projectModel.findById(projectId).exec();
+        const task = project.tasks.find( f => f.description === taskDescription);
+        const taskIdx = project.tasks.findIndex( f => f.description === taskDescription);
+
+        task.isActive = false;
+        task.concludedAt = new Date;
+        project.tasks[taskIdx] = task;
+        
+        return project.save();
+    }
 }

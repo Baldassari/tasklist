@@ -1,3 +1,3 @@
-export class AddTaskDTO {
+export class TaskDTO {
     description: string;
 }

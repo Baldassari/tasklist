@@ -27,10 +27,8 @@ export class LoginModalComponent extends DialogModalComponent {
    login() {
      console.log(this.data);
      this.userService.login(this.data.email, this.data.password).subscribe(x => {
-       if (!x.status) {
-         this.snakBar.open(`Welcome ${x.response.data?.name}!`, null ,{duration: 2000})
          this.dialogRef.close();
-       }
+         this.snakBar.open(`Welcome ${x.response.data?.name}!`, null ,{duration: 2000})
       })
    }
 

@@ -1,28 +1,28 @@
 import { Schema, Document } from "mongoose";
 
-export enum TaskEnum {
+export enum TaskType {
     TODO,
     DOING,
     DONE,
     PARKED,
 }
 
-export class Task extends Document {
+export class Task {
+    public createdAt: Date;
+    public concludedAt: Date;
+    public isActive: boolean;
+
     constructor(
         public description: string,
-        public status: TaskEnum,
-        public createdAt: Date,
-        public concludedAt: Date,
-        public isActive: boolean,
     ) {
-        super();
         this.description = description;
     }
 }
 
 export const TaskSchema = new Schema<Task>({
     description: { type: String, required: true },
-    status: { type: TaskEnum, default: TaskEnum.TODO },
+    status: { type: TaskType, default: TaskType.TODO },
     createdAt: { type: Date, default: new Date() },
+    concludedAt: { type: Date },
     isActive: { type: Boolean, default: true },
 });
