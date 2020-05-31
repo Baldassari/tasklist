@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
-    // this.openLogin();
+    this.openLogin();
   }
   
   openLogin() {

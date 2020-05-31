@@ -9,17 +9,17 @@ import { mixinTabIndex } from '@angular/material/core';
   providedIn: 'root'
 })
 export class UserService {
+  name: string;
   email: string;
   token: string;
   constructor(private http: HttpClient, private snakBar: MatSnackBar) { }
 
   login(email: string, password: string): Observable<any> {
     this.email = email;
-    return this.http.post('http://localhost:3000/users/login', { email: email, password: password }, 
-    { headers: { 'Access-Control-Allow-Origin': '*' }})
+    return this.http.post('http://localhost:3000/users/login', { email: email, password: password })
       .pipe(
         tap((response) => {
-          this.token = response.data?.token
+          this.token = response.data?.token;
         }, (error) => {})
       )
   }
