@@ -2,19 +2,23 @@ import { Schema, Document } from "mongoose";
 import { ModelDefinition } from "@nestjs/mongoose";
 
 export class User extends Document {
-    email: string;
-    password: string;
-    name: string;
-    token: string;
-    isActive: boolean;
+    constructor(
+        public email: string,
+        public password: string,
+        public name: string,
+        public token: string,
+        public isActive: boolean,
+    ) {
+        super();
+    }
 }
 
 export const UserSchema = new Schema<User>({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     name: { type: String },
-    token: { type: String},
-    isActive: { type: Boolean, default: true }
+    token: { type: String },
+    isActive: { type: Boolean, default: true },
 });
 
-export const UserModel: ModelDefinition = { name: 'Users', schema: UserSchema };
+export const UserModel: ModelDefinition = { name: "Users", schema: UserSchema };

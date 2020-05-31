@@ -3,6 +3,6 @@ export class UserDTO {
     password: string;
 }
 
-export class CreateUserDTO extends UserDTO{
+export class CreateUserDTO extends UserDTO {
     name: string;
 }

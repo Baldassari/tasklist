@@ -25,17 +25,19 @@ export class UsersService {
     }
 
     async login(dto: UserDTO): Promise<User> {
-        const token = sign({ email: dto.email }, 'secrettasklist');
+        const token = sign({ email: dto.email }, "secrettasklist");
         const userExists = await this.userExistsByEmail(dto.email);
         if (!userExists) {
-            throw new Error(`User with email [${dto.email}] do not exists.`)
+            throw new Error(`User with email [${dto.email}] do not exists.`);
         }
 
-        const user = await this.userModel.findOne({ email: dto.email, password: dto.password }).exec();
+        const user = await this.userModel
+            .findOne({ email: dto.email, password: dto.password })
+            .exec();
         user.token = token;
-        return user.save()
+        return user.save();
     }
-    
+
     async userExistsByEmail(email: string) {
         return this.userModel.exists({ email: email });
     }
