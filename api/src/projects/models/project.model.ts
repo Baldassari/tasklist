@@ -15,6 +15,7 @@ export class Project extends Document {
     tasks: Task[];
     createdBy: string;
     createdAt: Date;
+    concludedAt: Date;
 
     constructor(name: string, createdBy: string) {
         super();

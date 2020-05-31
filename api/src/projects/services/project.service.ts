@@ -21,13 +21,8 @@ export class ProjectService {
     }
 
     async addProjectTask(projectId: string, taskDescription: string): Promise<Project> {
-        return this.projectModel.findByIdAndUpdate(projectId, (err, project) => {
-            if (err) {
-                throw err;
-            }
-            
-            project.tasks = [ ...project.tasks, new Task(taskDescription)];
-            return project.save();
-        });
+        const project = await this.projectModel.findById(projectId).exec();
+        project.tasks = [ ...project.tasks, new Task(taskDescription) ];
+        return project.save()
     }
 }

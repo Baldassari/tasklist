@@ -11,6 +11,7 @@ export class Task extends Document {
     description: string;
     status: TaskEnum;
     createdAt: Date;
+    concludedAt: Date;
     isActive: boolean;
 
     constructor(description: string) {

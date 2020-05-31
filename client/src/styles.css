@@ -24,7 +24,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex-direction: row;
     justify-content: space-evenly;
 }
+
 .modal-form-action > button {
     width: 50%;
     border-radius: 0px;
+}
+
+.cdk-overlay-container {
+    top: 64px;
+}
+
+.cdk-overlay-pane {
+    position: relative !important;
+    top: -70px;
+}
+
+.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+    line-height: 30px !important;
+}
+
+mat-card-actions {
+    margin-left: 12px !important;
 }

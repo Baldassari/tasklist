@@ -1,9 +1,14 @@
-export class BaseResponse {
+
+class Response {
     data: any;
     error: any;
+}
+export class BaseResponse {
+    response: Response;
 
     constructor(data: any = {}, error: any = undefined) {
-        this.data = data;
-        this.error = error;
+        this.response = new Response();
+        this.response.data = data;
+        this.response.error = error;
     }
 }

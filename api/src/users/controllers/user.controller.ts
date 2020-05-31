@@ -39,7 +39,14 @@ export class UsersController {
 
     @Post('/login')
     async login(@Body() login: UserDTO) {
-        const user = await this.usersService.login(login);
-        return new BaseResponse({ token: user.token });
+        return await this.usersService.login(login)
+            .then(user => {
+                return new BaseResponse({ token: user.token, name: user.name });
+            })
+            .catch((error: Error) => {
+                return new BadRequestException(
+            new BaseResponse(null, error.message)
+            )
+        });
     }
 }
