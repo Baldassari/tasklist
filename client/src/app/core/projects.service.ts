@@ -7,17 +7,19 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProjectsService {
-
-  constructor(private http: HttpClient, private userService: UserService) { }
+  email: string;
+  constructor(private http: HttpClient, private userService: UserService) { 
+    this.userService.email.subscribe(v => this.email = v);
+  }
 
   getProjects() {
-    return this.http.get(`http://localhost:3000/projects?email=${'tasklist@test.com'}`)
+    return this.http.get(`http://localhost:3000/projects?email=${this.email}`)
     .pipe(tap(x => console.log(x)))
   }
 
   addProject(name: string) {
     if (name === undefined) return;
-    return this.http.post('http://localhost:3000/projects', { email: 'tasklist@test.com', name: name })
+    return this.http.post('http://localhost:3000/projects', { email: this.email, name: name })
       .pipe(tap(x => console.log(x)))
   }
 

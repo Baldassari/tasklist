@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { tap } from "rxjs/operators";
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { mixinTabIndex } from '@angular/material/core';
 
 @Injectable({
@@ -10,16 +10,16 @@ import { mixinTabIndex } from '@angular/material/core';
 })
 export class UserService {
   name: string;
-  email: string;
-  token: string;
+  email: Subject<string> = new Subject();
+  token: Subject<string> = new Subject();
   constructor(private http: HttpClient, private snakBar: MatSnackBar) { }
 
   login(email: string, password: string): Observable<any> {
-    this.email = email;
+    this.email.next(email);
     return this.http.post('http://localhost:3000/users/login', { email: email, password: password })
       .pipe(
         tap((response) => {
-          this.token = response.data?.token;
+          this.token.next(response.data?.token)
         }, (error) => {})
       )
   }
